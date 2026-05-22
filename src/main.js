@@ -4,7 +4,7 @@ import { AxiomUserSearch } from './js/pixabay-api';
 import { renderItems } from './js/render-functions';
 export const refs = {
   formEl: document.querySelector('.js-form'),
-  containerElem: document.querySelector('.js-gallery'),
+  containerElem: document.querySelector('.gallery'),
   loadingElem: document.querySelector('.loader')
 };
 refs.formEl.addEventListener('submit', e => {

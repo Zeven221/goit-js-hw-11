@@ -1,7 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { refs } from '../main';
-const lightbox = new SimpleLightbox('.js-gallery .gallery-item .gallery-link', {
+const lightbox = new SimpleLightbox('.gallery .gallery-item .gallery-link', {
   captionSelector: 'img',
   captionsData: 'alt',
   captionDelay: 250,

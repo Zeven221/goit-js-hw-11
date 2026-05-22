@@ -2,7 +2,7 @@
     font-family: "Montserrat", sans-serif;
 }
 
-.js-gallery {
+.gallery {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
