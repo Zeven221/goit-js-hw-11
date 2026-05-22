@@ -1,27 +1,27 @@
-import{a as c,S as m,i as n}from"./assets/vendor-Cce4fIue.js";(function(){const i=document.createElement("link").relList;if(i&&i.supports&&i.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))o(r);new MutationObserver(r=>{for(const t of r)if(t.type==="childList")for(const a of t.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&o(a)}).observe(document,{childList:!0,subtree:!0});function l(r){const t={};return r.integrity&&(t.integrity=r.integrity),r.referrerPolicy&&(t.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?t.credentials="include":r.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function o(r){if(r.ep)return;r.ep=!0;const t=l(r);fetch(r.href,t)}})();function u(e){const i="https://pixabay.com/api/",l={key:"55949954-f9f721bb22bd9fe0f33f87243",q:e,image_type:"photo",orientation:"horizontal",safesearch:!0};return c.get(i,{params:l}).then(o=>o.data.hits).catch(o=>console.log(o,"promise-error"))}const d=new m(".gallery .gallery-item .gallery-link",{captionSelector:"img",captionsData:"alt",captionDelay:250});function f(e){const i=e.map(l=>g(l)).join("");s.containerElem.innerHTML=i,d.refresh()}function g(e){return`<li class="gallery-item">
-  <a class="gallery-link" href="${e.largeImageURL}">
-    <img class="gallery-image" src="${e.webformatURL}" alt="${e.name||e.tags}" />
+import{a as c,S as m,i as n}from"./assets/vendor-Cce4fIue.js";(function(){const i=document.createElement("link").relList;if(i&&i.supports&&i.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))o(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const a of r.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&o(a)}).observe(document,{childList:!0,subtree:!0});function s(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function o(e){if(e.ep)return;e.ep=!0;const r=s(e);fetch(e.href,r)}})();function u(t){const i="https://pixabay.com/api/",s={key:"55949954-f9f721bb22bd9fe0f33f87243",q:t,image_type:"photo",orientation:"horizontal",safesearch:!0};return c.get(i,{params:s}).then(o=>o.data.hits).catch(()=>[])}const d=new m(".gallery-item .gallery-link",{captionSelector:"img",captionsData:"alt",captionDelay:250});function f(t){const i=t.map(s=>g(s)).join("");l.containerElem.innerHTML=i,d.refresh()}function g(t){return`<li class="gallery-item">
+  <a class="gallery-link" href="${t.largeImageURL}">
+    <img class="gallery-image" src="${t.webformatURL}" alt="${t.tags}" />
   </a>
   <div class="gallery-item-desc-div">
     <ul class="gallery-item-desc-list">
     <li class="gallery-item-desc-item">
     Likes
-    <p>${e.likes}</p>
+    <p>${t.likes}</p>
     </li>
     <li class="gallery-item-desc-item">
     Views
-    <p>${e.views}</p>
+    <p>${t.views}</p>
     </li>
     <li class="gallery-item-desc-item">
     Comments
-    <p>${e.comments}</p>
+    <p>${t.comments}</p>
     </li>
     <li class="gallery-item-desc-item">
     Download
-    <p>${e.downloads}</p>
+    <p>${t.downloads}</p>
     </li>
     </ul>
   </div>
 </li>
-`}function p(){s.containerElem.innerHTML=""}function y(){s.loadingElem.style.display="inline-block"}function h(){s.loadingElem.style.display="none"}const s={formEl:document.querySelector(".js-form"),containerElem:document.querySelector(".gallery"),loadingElem:document.querySelector(".loader")};s.formEl.addEventListener("submit",e=>{e.preventDefault();const l=new FormData(s.formEl).get("search-text").trim();if(l.length===0){n.show({close:!1,messageColor:"#FFFFFF",message:"Fill please field",position:"topRight",progressBar:!0,progressBarColor:"rgb(181, 27, 27)",color:"#EF4040",maxWidth:432});return}y(),p(),u(l).then(o=>{if(o.length===0){n.error({message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight",maxWidth:432,color:"#EF4040",messageColor:"#FAFAFB"});return}f(o)}).finally(()=>{h()})});
+`}function p(){l.containerElem.innerHTML=""}function y(){l.loadingElem.style.display="inline-block"}function h(){l.loadingElem.style.display="none"}const l={formEl:document.querySelector(".js-form"),containerElem:document.querySelector(".gallery"),loadingElem:document.querySelector(".loader")};l.formEl.addEventListener("submit",t=>{t.preventDefault();const s=new FormData(l.formEl).get("search-text").trim();if(s.length===0){n.show({close:!1,messageColor:"#FFFFFF",message:"Fill please field",position:"topRight",progressBar:!0,progressBarColor:"rgb(181, 27, 27)",color:"#EF4040",maxWidth:432});return}y(),p(),u(s).then(o=>{if(o.length===0){n.error({message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight",maxWidth:432,color:"#EF4040",messageColor:"#FAFAFB"});return}f(o)}).catch(o=>{n.error({title:"Error",message:o,position:"topRight"})}).finally(()=>{h()})});
 //# sourceMappingURL=index.js.map
