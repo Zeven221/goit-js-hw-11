@@ -1,7 +1,15 @@
+import { AxiosUserSearch } from './js/pixabay-api';
+import {
+  clearGallery,
+  hideLoader,
+  renderItems,
+  showLoader,
+} from './js/render-functions';
+// Описаний у документації
 import iziToast from 'izitoast';
+// Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
-import { AxiomUserSearch } from './js/pixabay-api';
-import { renderItems } from './js/render-functions';
+
 export const refs = {
   formEl: document.querySelector('.js-form'),
   containerElem: document.querySelector('.gallery'),
@@ -24,20 +32,24 @@ refs.formEl.addEventListener('submit', e => {
     });
     return;
   }
-  refs.loadingElem.style.display = 'inline-block';
-  AxiomUserSearch(inputValue).then(res => {
-    refs.loadingElem.style.display = 'none';
-    if (res.data.hits.length !== 0) {
-      renderItems(res.data.hits);
-    } else {
-      iziToast.error({
-        message:
-          'Sorry, there are no images matching your search query. Please try again!',
-        position: 'topRight',
-        maxWidth: 432,
-        color: '#EF4040',
-        messageColor: '#FAFAFB',
-      });
-    }
-  });
+  showLoader();
+  clearGallery();
+  AxiosUserSearch(inputValue)
+    .then(res => {
+      if (res.length === 0) {
+        iziToast.error({
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+          position: 'topRight',
+          maxWidth: 432,
+          color: '#EF4040',
+          messageColor: '#FAFAFB',
+        });
+        return;
+      }
+      renderItems(res);
+    })
+    .finally(() => {
+      hideLoader();
+    });
 });

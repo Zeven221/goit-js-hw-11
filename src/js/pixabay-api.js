@@ -1,7 +1,6 @@
 import axios, { isCancel, AxiosError } from 'axios';
-
-export function AxiomUserSearch(query) {
-  const url = 'https://pixabay.com/api/'
+export function AxiosUserSearch(query) {
+  const url = 'https://pixabay.com/api/';
 
   const params = {
     key: '55949954-f9f721bb22bd9fe0f33f87243',
@@ -10,6 +9,5 @@ export function AxiomUserSearch(query) {
     orientation: 'horizontal',
     safesearch: true,
   };
-  return axios.get(url, { params })
- 
+  return axios.get(url, { params }).then(res => res.data.hits).catch(e => console.log(e, 'promise-error'))
 }

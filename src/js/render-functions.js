@@ -14,7 +14,7 @@ export function renderItems(array) {
 function CreateMarkup(elem) {
   return `<li class="gallery-item">
   <a class="gallery-link" href="${elem.largeImageURL}">
-    <img class="gallery-image" src="${elem.previewURL}" alt="${elem.name}" />
+    <img class="gallery-image" src="${elem.webformatURL}" alt="${elem.name || elem.tags}" />
   </a>
   <div class="gallery-item-desc-div">
     <ul class="gallery-item-desc-list">
@@ -38,4 +38,13 @@ function CreateMarkup(elem) {
   </div>
 </li>
 `;
+}
+export function clearGallery() {
+  refs.containerElem.innerHTML = '';
+}
+export function showLoader() {
+  refs.loadingElem.style.display = 'inline-block'
+}
+export function hideLoader() {
+  refs.loadingElem.style.display = 'none'
 }
