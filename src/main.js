@@ -48,6 +48,12 @@ refs.formEl.addEventListener('submit', e => {
         return;
       }
       renderItems(res);
+    }).catch(e => {
+      iziToast.error({
+        title: 'Error',
+        message: e,
+        position: 'topRight',
+      })
     })
     .finally(() => {
       hideLoader();

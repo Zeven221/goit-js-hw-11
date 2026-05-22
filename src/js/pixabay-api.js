@@ -9,5 +9,5 @@ export function AxiosUserSearch(query) {
     orientation: 'horizontal',
     safesearch: true,
   };
-  return axios.get(url, { params }).then(res => res.data.hits).catch(e => console.log(e, 'promise-error'))
+  return axios.get(url, { params }).then(res => res.data.hits).catch(() => [])
 }
